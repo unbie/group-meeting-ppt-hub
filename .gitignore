@@ -1,0 +1,14 @@
+.venv/
+.uv-cache/
+__pycache__/
+.pytest_cache/
+.test-tmp/
+*.pyc
+.env
+config.json
+data/
+.smoke-data/
+*.sqlite3
+*.pptx
+*.zip
+uploads/

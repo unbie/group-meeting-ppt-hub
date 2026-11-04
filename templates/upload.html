@@ -1,0 +1,17 @@
+{% extends 'base.html' %}{% block title %}上传汇报 · 组会资料台{% endblock %}{% block content %}
+<section class="panel form-panel" aria-labelledby="upload-title">
+  <div class="page-heading"><h1 id="upload-title">提交组会 PPT</h1><p>填写汇报人和组会日期，上传演示文稿。</p></div>
+  <form action="/upload" method="post" enctype="multipart/form-data" data-loading>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="form-grid">
+      <label>姓名<input name="name" maxlength="40" required autocomplete="name" placeholder="例如：张三"></label>
+      <label>组会日期<input name="date" inputmode="numeric" pattern="[0-9]{8}" maxlength="8" required placeholder="YYYYMMDD，例如 20261102"></label>
+    </div>
+    <div class="file-field">
+      <span class="field-title">演示文稿</span>
+      <div class="file-picker"><input id="upload-file" class="file-input" type="file" name="file" accept=".pptx,.ppt" required data-file-input><label for="upload-file" class="file-trigger">选择 PPT 文件</label><span class="file-name" data-file-name aria-live="polite">未选择文件</span></div>
+      <small>支持 .pptx；旧版 .ppt 需服务器安装 LibreOffice 转换。单文件不超过 50 MB。</small>
+    </div>
+    <div class="submit-row"><button class="primary" type="submit">提交汇报</button><p>文件仅管理员可以查看和下载；同一姓名和日期再次提交时，会先确认是否覆盖。</p></div>
+  </form>
+</section>{% endblock %}

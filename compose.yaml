@@ -1,0 +1,18 @@
+services:
+  hub:
+    build: .
+    restart: unless-stopped
+    environment:
+      PPT_HUB_DATA_DIR: /data
+      PPT_HUB_HOST: 0.0.0.0
+      PPT_HUB_PORT: "1410"
+      PPT_HUB_ADMIN_USER: ${PPT_HUB_ADMIN_USER:-admin}
+      PPT_HUB_SECRET_KEY: ${PPT_HUB_SECRET_KEY:?Run python setup.py --docker first}
+      PPT_HUB_ADMIN_PASSWORD_HASH: ${PPT_HUB_ADMIN_PASSWORD_HASH:?Run python setup.py --docker first}
+      PPT_HUB_HTTPS: ${PPT_HUB_HTTPS:-0}
+    ports:
+      - "127.0.0.1:1410:1410"
+    volumes:
+      - hub_data:/data
+volumes:
+  hub_data:

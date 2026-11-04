@@ -1,0 +1,11 @@
+.git
+.venv
+.uv-cache
+.pytest_cache
+__pycache__
+data
+config.json
+.env
+tests
+*.pptx
+*.zip

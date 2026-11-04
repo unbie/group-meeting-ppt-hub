@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}组会资料台{% endblock %}</title>
+  <noscript><style>.file-name{display:none}</style></noscript>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='2') }}">
+</head>
+<body>
+  <header class="top"><div class="top-inner"><a class="brand" href="/">组会资料台</a><nav aria-label="主导航"><a href="/">提交汇报</a><a href="/admin">管理入口</a></nav></div></header>
+  <main>{% with messages=get_flashed_messages() %}{% for m in messages %}<div class="notice" role="status">{{ m }}</div>{% endfor %}{% endwith %}{% if error %}<div class="error" role="alert">{{ error }}</div>{% endif %}{% block content %}{% endblock %}</main>
+  <footer>本地部署 · 资料仅供组会整理使用</footer>
+  <script src="{{ url_for('static', filename='app.js', v='2') }}"></script>
+</body>
+</html>
